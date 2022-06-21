@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="X_Forms.Layouts.StackLayoutBsp"
+             Title="STACK">
+    <ContentPage.Content>
+
+        <!--StackLayouts ordnen ihre Children-Elemente gemäß ihrer Orientation-Property unter- oder nebeneinander an.
+        Spacing gibt den Abstand zwischen den einzelnen Elementen an-->
+        <StackLayout BackgroundColor="Black"
+                     Orientation="Vertical"
+                     Spacing="10"
+                     Padding="10">
+
+            <Label FontSize="25"
+                   Text="Label1"
+                   BackgroundColor="Green"/>
+
+            <!--Mittels Horizontal- und VerticalOptions kann die Position und Ausdehnung einzelner Controls
+            auf den jeweiligen Achsen angepasst werden-->
+            <Label FontSize="25"
+                   Text="Label2"
+                   BackgroundColor="Red"
+                   VerticalOptions="FillAndExpand"
+                   VerticalTextAlignment="Center"
+                   HorizontalTextAlignment="Center"/>
+
+            <Label FontSize="25"
+                   Text="Label3"
+                   BackgroundColor="Yellow"
+                   HorizontalOptions="Center"/>
+
+            <Label FontSize="25"
+                   Text="Label4"
+                   BackgroundColor="Blue"
+                   VerticalOptions="FillAndExpand"/>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

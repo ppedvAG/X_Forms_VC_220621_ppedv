@@ -2,7 +2,19 @@
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="X_Forms.App">
+    <!--In der App.xaml können globale Ressourcen abgelegt werden-->
     <Application.Resources>
-        <ResourceDictionary Source="ResDict.xaml"/>
+        <!--ResourceDictionaries sind Ressourcensammlungen in eigenen Dateien (vg. ResDict.xaml). 
+        Damit diese verwendet werden können, müssen sie in einem Resource-Feld angemeldet werden-->
+        <ResourceDictionary>
+            <!--Mehrere ResourceDictionaries können mittels der MergedDictionaries-Eigenschaft
+            zusammen in ein Ressourcen-Feld gelegt werden-->
+            <ResourceDictionary.MergedDictionaries>
+
+                <ResourceDictionary Source="ResDict.xaml"/>
+                <!--<ResourceDictionary Source="WeitereResDicts.xaml"/>-->
+
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
