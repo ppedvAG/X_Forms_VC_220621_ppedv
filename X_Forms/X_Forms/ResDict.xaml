@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <x:Double x:Key="GlobalFontSize">20.0</x:Double>
+
+    <Style x:Key="Style_Button" TargetType="Button">
+        <Setter Property="BackgroundColor" Value="Blue"/>
+        <Setter Property="TextColor" Value="White"/>
+        <Setter Property="FontSize" Value="{StaticResource GlobalFontSize}"/>
+    </Style>
+
+    <Style TargetType="Button" BasedOn="{StaticResource Style_Button}">
+        <Setter Property="FontAttributes" Value="Bold"/>
+    </Style>
+    
+</ResourceDictionary>

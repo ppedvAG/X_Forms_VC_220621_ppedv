@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:X_Forms"
+             x:Class="X_Forms.MainPage">
+    <ContentPage.Resources>
+        <x:String x:Key="BtnString">Hallo, ich bin auch eine Ressource</x:String>
+
+        <local:DoubleToColorConverter x:Key="double2color"/>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="LightBlue" x:Name="Sly_Main">
+
+            <StackLayout.Resources>
+                <x:String x:Key="BtnString">Hallo, ich bin eine Ressource</x:String>
+            </StackLayout.Resources>
+            
+            <Frame BorderColor="Green"
+                   Margin="10">
+                
+                <Label x:Name="Lbl_Output"
+                       FontSize="{StaticResource GlobalFontSize}"
+                       HorizontalTextAlignment="Center"
+                       FontAttributes="Bold">
+
+                    <Label.Text>
+                        Hallo, ich bin ein String
+                    </Label.Text>
+
+                </Label>
+            </Frame>
+            
+            <Button x:Name="Btn_KlickMich"
+                    Text="{StaticResource BtnString}"
+                    Clicked="Btn_KlickMich_Clicked"
+                    BorderColor="Red"
+                    BackgroundColor="HotPink"
+                    BorderWidth="2"/>
+
+            <ImageButton x:Name="IBtn_Beispiel"
+                         Source="test.png"
+                         HeightRequest="50"
+                         BackgroundColor="Transparent"
+                         Clicked="IBtn_Beispiel_Clicked"/>
+
+            <Entry x:Name="Ent_Input"
+                   Placeholder="Gib einen String ein"
+                   Keyboard="Text"
+                   Completed="Ent_Input_Completed"/>
+
+            <Slider Minimum="0"
+                    Maximum="100"
+                    Value="50"/>
+
+            <DatePicker Date="01/01/2022"
+                        Format="dd.MM.yyyy"/>
+
+            <Picker x:Name="Pkr_Names"
+                    Title="Wähle einen Namen aus:">
+                <Picker.Items>
+                    <x:String>Hugo</x:String>
+                    <x:String>Anna</x:String>
+                    <x:String>Jürgen</x:String>
+                    <x:String>Maria</x:String>
+                </Picker.Items>
+            </Picker>
+
+            <StackLayout x:Name="Sly_Styles">
+                <Button Text="Globaler Style"/>
+                <Button Text="Spezifischer Style"
+                        Style="{StaticResource Style_Button}"/>
+            </StackLayout>
+
+            <StackLayout x:Name="Sly_Binding" Orientation="Horizontal">
+                <Slider Minimum="0"
+                        Maximum="255"
+                        WidthRequest="250"
+                        x:Name="Sdr_Binding"/>
+                <Entry Text="{Binding Source={x:Reference Sdr_Binding}, Path='Value'}"
+                       WidthRequest="50"/>
+                <BoxView HeightRequest="50"
+                         WidthRequest="50"
+                         BackgroundColor="{Binding Source={x:Reference Sdr_Binding}, Path=Value, Converter={StaticResource double2color}, ConverterParameter=150}"/>
+            </StackLayout>
+            
+        </StackLayout>
+    </ContentPage.Content>
+
+</ContentPage>
