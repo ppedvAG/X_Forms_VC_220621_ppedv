@@ -99,7 +99,7 @@
             <TimePicker Time="01:01:01"/>
 
             <!--Picker dienen als ItemCollections, aus denen der User einen Eintrag auswählen kann (ähnlich ComboBoxen auf Desktops)-->
-            <Picker x:Name="Pkr_Names"
+            <Picker x:Name="Pkr_Namen"
                     Title="Wähle einen Namen aus:">
                 <Picker.Items>
                     <x:String>Hugo</x:String>

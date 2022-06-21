@@ -1,15 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--ResourceDictionaries sind XAML-Dateien um XAML-Resourcen applikationsunabhängig zu definieren. Sie müssen im Programm angemeldet werden (vgl. App.xaml)-->
+<!--Xamarin hat kein eigenes Template für ResourceDictionaries. Diese können z.B. durch das ContentPage-Template erstellt werden: 1. Erstelle eine neue ContentPage, 2. Lösche die CodeBehind-Datei (*.xaml.cs), 3. Lösche das x:Class-Attribut, 4. Ändere den ContentPage-Tag in ein ResourceDictionary-Tag-->
 <ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
                     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
     <x:Double x:Key="GlobalFontSize">20.0</x:Double>
 
+    <!--Styles sind Property-Sammlungen für Controls, welche diese Wert als neue Standart-Wert übernehmen.
+    Style können über die Style-Property der Controls direkt per Resourcen-Bindung verwendet werden.-->
     <Style x:Key="Style_Button" TargetType="Button">
         <Setter Property="BackgroundColor" Value="Blue"/>
         <Setter Property="TextColor" Value="White"/>
         <Setter Property="FontSize" Value="{StaticResource GlobalFontSize}"/>
     </Style>
 
+    <!--Haben die Styles keinen Key, gelten sie als 'globale' Styles und werden automatisch
+    von den Controls in der Range übernommen-->
+    <!--Styles können über die BasedOn-Property von anderen Styles erben.-->
     <Style TargetType="Button" BasedOn="{StaticResource Style_Button}">
         <Setter Property="FontAttributes" Value="Bold"/>
     </Style>

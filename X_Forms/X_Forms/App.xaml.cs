@@ -15,7 +15,7 @@ namespace X_Forms
             //Zuweisung einer Page zu der MainPage-Property (Startseite)
             //MainPage = new MainPage();
 
-            MainPage = new Übungen.U_StackLayout();
+            MainPage = new Übungen.U_GridLayout();
         }
 
         protected override void OnStart()
