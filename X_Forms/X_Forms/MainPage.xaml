@@ -53,6 +53,17 @@
                         Hallo, ich bin ein String
                     </Label.Text>
 
+                    <Label.BackgroundColor>
+                        <OnPlatform x:TypeArguments="Color" Android="Yellow" iOS="Blue" Default="Green"/>
+                    </Label.BackgroundColor>
+                    <Label.TextColor>
+                        <OnIdiom x:TypeArguments="Color" Phone="Red" Desktop="Gold" Watch="HotPink" Default="White"/>
+                    </Label.TextColor>
+
+                    <Label.IsVisible>
+                        <OnIdiom x:TypeArguments="x:Boolean" Default="True" Watch="False"/>
+                    </Label.IsVisible>
+
                 </Label>
             </Frame>
 

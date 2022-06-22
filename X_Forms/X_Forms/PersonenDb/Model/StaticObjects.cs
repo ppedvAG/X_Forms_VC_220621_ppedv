@@ -8,10 +8,9 @@ namespace X_Forms.PersonenDb.Model
     //Statische Klasse zur Verwaltung von globalen, statischen Objekten
     public static class StaticObjects
     {
-        public static ObservableCollection<Person> Personenliste { get; set; } = new ObservableCollection<Model.Person>()
-        {
-            new Person(){Vorname="Anna", Nachname="Nass"},
-            new Person(){Vorname="Rainer", Nachname="Zufall"},
-        };
+        public static Services.PersonenDbController Datenbank { get; set; } = new Services.PersonenDbController();
+
+        public static ObservableCollection<Person> Personenliste { get; set; } = new ObservableCollection<Model.Person>(Datenbank.GetPeople());
+
     };
 }

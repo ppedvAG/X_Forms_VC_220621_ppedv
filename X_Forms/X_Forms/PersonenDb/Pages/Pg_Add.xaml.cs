@@ -37,10 +37,14 @@ namespace X_Forms.PersonenDb.Pages
         {
             //Hinzufügen der Person zu Personenliste (vgl. Model/StaticObjects.cs)
             Model.StaticObjects.Personenliste.Add(NeuePerson);
+
+            Model.StaticObjects.Datenbank.AddPerson(NeuePerson);
+
             //Neue Person für die nächste Eingabe
             NeuePerson = new Model.Person();
             //Informieren der GUI über neue (leere) Person -> leert angebundene Eingeschaften in Entries
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(NeuePerson)));
+
         }
 
         //INotifyPropertyChanged-Event

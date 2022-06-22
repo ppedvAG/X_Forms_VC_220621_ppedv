@@ -39,7 +39,9 @@ namespace X_Forms.PersonenDb.Pages
             if (result)
             {
                 //Löschen aus lokaler Liste
-                Personenliste.Remove(person);                
+                Personenliste.Remove(person);
+
+                Model.StaticObjects.Datenbank.DeletePerson(person);
             }
         }
     }
