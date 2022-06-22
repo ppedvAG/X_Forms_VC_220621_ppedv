@@ -54,12 +54,13 @@
                     </Label.Text>
 
                     <Label.BackgroundColor>
+                        <!--Mittels eines OnPlattform-Objekts können Eigenschaften OS-spezifisch belegt werden-->
                         <OnPlatform x:TypeArguments="Color" Android="Yellow" iOS="Blue" Default="Green"/>
                     </Label.BackgroundColor>
                     <Label.TextColor>
+                        <!--Mittels eines OnIdiom-Objekts können Eigenschaften Geräte-spezifisch belegt werden-->
                         <OnIdiom x:TypeArguments="Color" Phone="Red" Desktop="Gold" Watch="HotPink" Default="White"/>
                     </Label.TextColor>
-
                     <Label.IsVisible>
                         <OnIdiom x:TypeArguments="x:Boolean" Default="True" Watch="False"/>
                     </Label.IsVisible>
@@ -215,7 +216,14 @@
                 <Button Text="Tabbed" x:Name="Btn_NavToTabbed" Clicked="Btn_NavToTabbed_Clicked"/>
                 <Button Text="Carousel" x:Name="Btn_NavToCarousel" Clicked="Btn_NavToCarousel_Clicked"/>
             </StackLayout>
-            
+
+            <!--Label zum Anzeigen des Batterie-Status mittels Xamarin.Essentials (vgl. CodeBehind)-->
+            <Label x:Name="Lbl_Battery"/>
+            <Button x:Name="Btn_Flashlight" Text="Taschenlampe an" Clicked="Btn_Flashlight_Clicked"/>
+            <!--Button zum Öffnen der Youtube-App-->
+            <Button x:Name="Btn_Youtube" Text="Öffne YouTube" Clicked="Btn_Youtube_Clicked"/>
+            <!--Button zum Senden einer MC-Nachricht (vgl. CodeBehind und MCSubscriberPage.cs)-->
+            <Button x:Name="Btn_MCSender" Text="MC Sender" Clicked="Btn_MCSender_Clicked"/>
         </StackLayout>
     </ScrollView>
 

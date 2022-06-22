@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace X_Forms
@@ -21,6 +22,8 @@ namespace X_Forms
 
             //Neuzuweisung einer Ressource des StyckLayouts (nur DynamicResource-Bindungen reagieren auf die Veränderung
             ((this.Content as ScrollView).Content as StackLayout).Resources["BtnString"] = "Neuer String";
+
+            Lbl_Battery.Text = $"{Battery.ChargeLevel * 100}% geladen | {Battery.State}";
         }
 
         //EventHandler eines Button-Click-Events (reagiert auf Button-Klick oder -Tab)
@@ -131,6 +134,45 @@ namespace X_Forms
         private void Btn_NavToCarousel_Clicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(new NavigationBsp.CarouselPageBsp());
+        }
+
+        private async void Btn_Flashlight_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                //Turn On
+                await Flashlight.TurnOnAsync();
+            }
+            catch (FeatureNotSupportedException fnsEx)
+            {
+                // Handle not supported on device exception
+            }
+            catch (PermissionException pEx)
+            {
+                // Handle permission exception
+            }
+            catch (Exception ex)
+            {
+                // Unable to turn on/off flashlight
+            }
+        }
+
+        private async void Btn_Youtube_Clicked(object sender, EventArgs e)
+        {
+            //Öffnen der Youtube-App über die Xamarin-Essentials mit Übergabe des Package-Namens
+            if (await Launcher.CanOpenAsync("vnd.youtube://"))
+                await Launcher.OpenAsync("vnd.youtube://rLKnqR9Oqh8");
+        }
+
+        //Bsp für Verwendung des MessagingCenters
+        private void Btn_MCSender_Clicked(object sender, EventArgs e)
+        {
+            //Instanzieren des Empängerobjekts
+            Page page = new MCSubscriberPage();
+            //Senden der Nachricht mit Angabe des Senders, des Titels und des Inhalts
+            MessagingCenter.Send(this, "Nachricht", Pkr_Namen.SelectedItem?.ToString());
+            //Öffnen der Bsp-Seite
+            Navigation.PushAsync(page);
         }
     }
 }
