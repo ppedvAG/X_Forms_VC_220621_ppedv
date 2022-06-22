@@ -6,9 +6,10 @@ using System.Text;
 
 namespace X_Forms.PersonenDb.Model
 {
-    //Model-Klasse für die PersonenDb-App.
+    //Model-Klasse für die PersonenDb-App. Auf SQLite-Datenbank optimiert
     public class Person
     {
+        //SQLite-Attribute zur Verwaltung innerhalb der DB
         [PrimaryKey, AutoIncrement]
         public Guid Id { get; set; }
         public string Vorname { get; set; }

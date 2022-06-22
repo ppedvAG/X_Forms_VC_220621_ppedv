@@ -6,6 +6,7 @@ using Xamarin.Forms;
 
 namespace X_Forms.PersonenDb.Services
 {
+    //Klasse zu DB-Verwaltung
     public class PersonenDbController
     {
         SQLiteConnection database;
@@ -14,6 +15,7 @@ namespace X_Forms.PersonenDb.Services
 
         public PersonenDbController()
         {
+            //Zugriff auf DI-System zur Instanzierung des plattformspezifischen Objekt (vgl. AndroidDatabaseService.cs)
             IDatabaseService dbService = DependencyService.Get<IDatabaseService>();
 
             database = dbService.GetConnection();

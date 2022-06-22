@@ -14,9 +14,11 @@ using X_Forms.Droid.Services;
 using X_Forms.PersonenDb.Services;
 using Xamarin.Forms;
 
+//Anmeldung der Klasse am DI-System
 [assembly: Dependency(typeof(AndroidDatabaseService))]
 namespace X_Forms.Droid.Services
 {
+    //Android-spezifische Implementierung (hier aufgrund des Dateisystem-Zugriffs nötig)
     internal class AndroidDatabaseService : IDatabaseService
     {
         public SQLiteConnection GetConnection()

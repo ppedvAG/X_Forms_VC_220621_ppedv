@@ -37,9 +37,10 @@ namespace X_Forms.PersonenDb.Pages
         {
             //Hinzufügen der Person zu Personenliste (vgl. Model/StaticObjects.cs)
             Model.StaticObjects.Personenliste.Add(NeuePerson);
-
+            //Hinzufügen der Peron zur Datenbank (vgl. Model/StaticObjects.cs)
             Model.StaticObjects.Datenbank.AddPerson(NeuePerson);
-
+            //Aufruf eines Toasts (vgl. Services/ToastController.cs)
+            Services.ToastController.ShowToast($"{NeuePerson.Vorname} wurde hinzugefügt");
             //Neue Person für die nächste Eingabe
             NeuePerson = new Model.Person();
             //Informieren der GUI über neue (leere) Person -> leert angebundene Eingeschaften in Entries
