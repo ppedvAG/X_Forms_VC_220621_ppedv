@@ -15,7 +15,13 @@ namespace X_Forms
             //Zuweisung einer Page zu der MainPage-Property (Startseite)
             //MainPage = new MainPage();
 
-            MainPage = new Übungen.U_AbsoluteLayout();
+            //Innerhalb einer NavigationPage kann die Property Page.Navigation verwendet werden, um die Page zu wechslen (vgl. MainPage.cs)
+            //MainPage = new NavigationPage(new MainPage());
+
+            MainPage = new NavigationBsp.FlyoutBsp.FlyoutPageBsp();
+
+            //MainPage = new NavigationBsp.AppShellBsp();
+            
         }
 
         protected override void OnStart()

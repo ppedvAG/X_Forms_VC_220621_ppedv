@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--vgl. CodeBehind, FlyoutNavigationBspFlyout.xaml, FlyoutNavigationBspFlyoutMenuItem.cs-->
+<!--Eine Flyout-Navigation ist das bekannte 'Handy-Menü' welches normalerweise über einen 
+    Button (Android: drei Striche in oberer linker Ecker) oder wischen von links aufgerufen werden kann.-->
+<FlyoutPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="X_Forms.NavigationBsp.FlyoutBsp.FlyoutPageBsp"
+             xmlns:pages="clr-namespace:X_Forms.NavigationBsp.FlyoutBsp"
+            xmlns:main="clr-namespace:X_Forms">
+    <!--Flyout-Menüs bestehen aus dem Flyout (dem Menü) ...-->
+    <FlyoutPage.Flyout>
+        <pages:FlyoutPageBspFlyout x:Name="FlyoutPage" />
+    </FlyoutPage.Flyout>
+    <!--... und der 'Startseite', welche of in einer NavigationPage verpackt ist-->
+    <FlyoutPage.Detail>
+        <NavigationPage>
+            <x:Arguments>
+                <main:MainPage/>
+            </x:Arguments>
+        </NavigationPage>
+    </FlyoutPage.Detail>
+</FlyoutPage>

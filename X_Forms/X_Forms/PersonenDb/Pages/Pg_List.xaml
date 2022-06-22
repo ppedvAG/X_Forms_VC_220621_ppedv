@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--vgl. CodeBehind, vgl. Pg_Add.xaml-->
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="X_Forms.PersonenDb.Pages.Pg_List"
+             Padding="10"
+             Title="List"
+             x:Name="PageList"
+             BindingContext="{Binding Source={x:Reference PageList}}">
+    
+    <!--Das ListView stellt die Daten der Personenliste da-->
+    <ListView x:Name="LstV_Liste"
+              ItemsSource="{Binding Personenliste}">
+        <ListView.ItemTemplate>
+            <!--Das DataTemplate definiert, wie die Daten aus der ItemSource-Eigenschaft angezeigt werden sollen (vgl. MainPage.xaml, Abschnitt DataBinding-->
+            <DataTemplate>
+                <ViewCell>
+                    <ViewCell.ContextActions>
+                        <MenuItem Text="Delete" x:Name="CaMenu_Delete" Clicked="CaMenu_Delete_Clicked"  CommandParameter="{Binding}"/>
+                    </ViewCell.ContextActions>
+                    <StackLayout Orientation="Horizontal" VerticalOptions="Center" Padding="10">
+                        <StackLayout.Resources>
+                            <Style TargetType="Label">
+                                <Setter Property="FontSize" Value="20"/>
+                            </Style>
+                        </StackLayout.Resources>
+                        <Label Text="{Binding Vorname}"/>
+                        <Label Text="{Binding Nachname}"/>
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+
+</ContentPage>

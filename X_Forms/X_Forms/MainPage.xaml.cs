@@ -20,7 +20,7 @@ namespace X_Forms
             InitializeComponent();
 
             //Neuzuweisung einer Ressource des StyckLayouts (nur DynamicResource-Bindungen reagieren auf die Veränderung
-            (this.Content as StackLayout).Resources["BtnString"] = "Neuer String";
+            ((this.Content as ScrollView).Content as StackLayout).Resources["BtnString"] = "Neuer String";
         }
 
         //EventHandler eines Button-Click-Events (reagiert auf Button-Klick oder -Tab)
@@ -100,6 +100,37 @@ namespace X_Forms
             if (await DisplayAlert("Löschen", "Möchtest du diesen Tag wirklich löschen?", "Ja", "Nein"))
                 //Erfragen des zu löschenden Items über den Event-Sender und die CommandParameter-Eigenschaft sowie Löschung aus der Liste
                 (Sly_DataBinding.BindingContext as Person).WichtigeTage.Remove((DateTime)(sender as MenuItem).CommandParameter);
+        }
+        private void ToolbarItem_Clicked(object sender, EventArgs e)
+        {
+            //löschen der kompletten Liste
+            (Sly_DataBinding.BindingContext as Person).WichtigeTage.Clear();
+        }
+
+        //Navigationsbeispiele
+        private void Btn_NavToGrid_Clicked(object sender, EventArgs e)
+        {
+            //Aufruf einer neuen Seite innerhalb der aktuellen NavigationPage 
+            Navigation.PushAsync(new Übungen.U_GridLayout());
+        }
+
+        private void Btn_NavToAbsolute_Clicked(object sender, EventArgs e)
+        {
+            //Aufruf einer neuen Seite innerhalb der aktuellen NavigationPage, welche aber keine Navigationsleiste anzeigt
+            Navigation.PushModalAsync(new Übungen.U_AbsoluteLayout());
+        }
+
+        private void Btn_NavToTabbed_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new NavigationBsp.TabbedPageBsp());
+
+            //Aufruf einer Shell-Route (nur in Shell möglich (vgl. NavigationBsp/AppShellBsp.xaml)
+            //Shell.Current.GoToAsync("//flyout/tabbed");
+        }
+
+        private void Btn_NavToCarousel_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new NavigationBsp.CarouselPageBsp());
         }
     }
 }

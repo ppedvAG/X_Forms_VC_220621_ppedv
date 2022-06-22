@@ -29,7 +29,7 @@
             <Label Text="Why pay for credit?"
                    FontAttributes="Bold"
                    HorizontalOptions="CenterAndExpand"/>
-            <Label Text="Because you can reach people who aren't on SkyApp by calling mobile and landline numbers, or spending SMS, at low-cost rates."
+            <Label Text="Because you can reach &#x0a; people who aren't on SkyApp by calling mobile and landline numbers, or spending SMS, at low-cost rates."
                    HorizontalOptions="CenterAndExpand"
                    HorizontalTextAlignment="Center"/>
         </StackLayout>

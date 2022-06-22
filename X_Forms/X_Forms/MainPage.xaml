@@ -6,7 +6,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:X_Forms"
-             x:Class="X_Forms.MainPage">
+             x:Class="X_Forms.MainPage"
+             Title="MAIN">
 
     <!--Jeder Container / jede Page hat eine Resource-Property, in welcher Ressourcen (Objekte, Styles, Converter, ...) für diesen 
     Container bereit gestellt werden können.-->
@@ -108,14 +109,14 @@
                     <x:String>Maria</x:String>
                 </Picker.Items>
             </Picker>
-            
+
             <!--Styles-->
             <StackLayout x:Name="Sly_Styles">
-                <!--Dieser Button nimmt den globalen Button-Style an (vgl. ResourceDict.xaml)-->
+                <!--Dieser Button nimmt den globalen Button-Style an (vgl. ResDict.xaml)-->
                 <Button Text="Globaler Style"/>
-                <!--Dieser Button nimmt einen expliziten Button-Style an (vgl. RessourceDict.xaml)-->
+                <!--Dieser Button nimmt einen expliziten Button-Style an (vgl. ResDict.xaml)-->
                 <Button Text="Spezifischer Style"
-                    Style="{StaticResource Btn_Style}"
+                    Style="{StaticResource Style_Button}"
                     BackgroundColor="LightGreen"/>
             </StackLayout>
 
@@ -128,6 +129,7 @@
                         Minimum="0" 
                         Maximum="255"
                         WidthRequest="250"/>
+
                 <!--Mittels einer Markup-Extension ({}-Klammern) kann eine Property an eine andere Property gebunden werden. Die Property,
                 welche die Markup-Extension beinhaltet, gilt als Target-Property-->
                 <Entry Text="{Binding Source={x:Reference Sdr_Binding}, Path='Value'}"
@@ -138,7 +140,6 @@
                          WidthRequest="50"
                          BackgroundColor="{Binding Source={x:Reference Sdr_Binding}, Path=Value, Converter={StaticResource double2color}, ConverterParameter=150}"/>
             </StackLayout>
-
             <!--DataBinding-->
             <StackLayout x:Name="Sly_DataBinding" Margin="10">
                 
@@ -187,10 +188,29 @@
                     </ListView.ItemTemplate>
                 </ListView>
                 <Button Text="Neu" x:Name="Btn_Add" Clicked="Btn_Add_Clicked"/>
-                <Button Text="Lösche Person" x:Name="Btn_Delete" Clicked="Btn_Delete_Clicked"/>
+                <Button Text="Lösche Eintrag" x:Name="Btn_Delete" Clicked="Btn_Delete_Clicked"/>
             </StackLayout>
 
+
+            <!--Verweis auf Beispiel-Layouts und -Navigation (vgl. CodeBehind, NavigationBsp und Layouts)-->
+            <StackLayout Orientation="Horizontal">
+                <StackLayout.Resources>
+                    <Style TargetType="Button">
+                        <Setter Property="FontSize" Value="Micro"/>
+                    </Style>
+                </StackLayout.Resources>
+                <Button Text="Grid" x:Name="Btn_NavToGrid" Clicked="Btn_NavToGrid_Clicked"/>
+                <Button Text="Absolute" x:Name="Btn_NavToAbsolute" Clicked="Btn_NavToAbsolute_Clicked"/>
+                <Button Text="Tabbed" x:Name="Btn_NavToTabbed" Clicked="Btn_NavToTabbed_Clicked"/>
+                <Button Text="Carousel" x:Name="Btn_NavToCarousel" Clicked="Btn_NavToCarousel_Clicked"/>
+            </StackLayout>
+            
         </StackLayout>
     </ScrollView>
 
+    <!--ToolbarItems werden permanent innerhalb der Navigationsleiste dieser Page angezeigt-->
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Liste löschen" Clicked="ToolbarItem_Clicked"/>
+    </ContentPage.ToolbarItems>
+    
 </ContentPage>

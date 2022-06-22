@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="X_Forms.NavigationBsp.AppShellBsp"
+       xmlns:local="clr-namespace:X_Forms"
+       xmlns:nav="clr-namespace:X_Forms.NavigationBsp">
+    <FlyoutItem Route="flyout" Title="Main">
+        <ShellContent Title="Main"
+                      ContentTemplate="{DataTemplate local:MainPage}"
+                      Route="main"/>
+    </FlyoutItem>
+    <FlyoutItem Route="flyout" Title="Tabbed">
+        <ShellContent Title="Tabbed"
+                      ContentTemplate="{DataTemplate nav:TabbedPageBsp}"
+                      Route="tabbed"/>
+    </FlyoutItem>
+</Shell>
