@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="X_Forms.MVVM.View.FahrzeugView"
+             xmlns:vm="clr-namespace:X_Forms.MVVM.ViewModel"
+             x:Name="Pg_FahrzeugView">
+    
+    <ContentPage.BindingContext>
+        <vm:FahrzeugViewModel ContextView="{x:Reference Pg_FahrzeugView}"/>
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <Entry x:Name="Ent_Hersteller"
+                   Text="{Binding NeuerHersteller}"/>
+            <Entry x:Name="Ent_MaxGeschwindigkeit"
+                   Text="{Binding NeueMaxGeschwindigkeit}"/>
+            
+            <Button x:Name="Btn_Add" Text="Hinzufügen"
+                    Command="{Binding HinzufuegenCmd}"/>
+
+            <ListView x:Name="LstV_Fahrzeuge" VerticalOptions="FillAndExpand"
+                      ItemsSource="{Binding Fahrzeugliste}"
+                      SelectedItem="{Binding SelectedFahrzeug, Mode=TwoWay}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding Hersteller}"/>
+                                <Label Text="{Binding MaxGeschwindigkeit}"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Button x:Name="Btn_Delete" Text="Löschen"
+                    Command="{Binding LoeschenCmd}"
+                    CommandParameter="{Binding Source={x:Reference LstV_Fahrzeuge}, Path=SelectedItem}"/>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
