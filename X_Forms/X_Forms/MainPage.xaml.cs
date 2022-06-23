@@ -14,6 +14,9 @@ namespace X_Forms
         //Konstruktor
         public MainPage()
         {
+            //Setzten der Ressourcensprache -> Bestimmt, welche resx-Bibliothek für die Lokalisierung verwendet wird
+            Properties.Resources.Culture = new System.Globalization.CultureInfo("de");
+
             //Codeseitige Veränderung einer Ressource in der App.xaml (bzw hier im ResourceDictionary, das in der App.xaml angemeldet ist-->
             Application.Current.Resources["GlobalFontSize"] = 25.0;
 
