@@ -4,21 +4,27 @@
              x:Class="X_Forms.MVVM.View.FahrzeugView"
              xmlns:vm="clr-namespace:X_Forms.MVVM.ViewModel"
              x:Name="Pg_FahrzeugView">
-    
+
+    <!--Im View-Teil von MVVM-Projekten werden die Fenster per XAML definiert. Diese Klassen dürfen keinen Code-Behind
+    besitzen. Diese Aufgabe wird von dem entsprechenden ViewModel übernommen, welches als BindingContext des Views gesetzt
+    wird. Dies geschieht hier innerhalb des XAML-Codes.-->
     <ContentPage.BindingContext>
         <vm:FahrzeugViewModel ContextView="{x:Reference Pg_FahrzeugView}"/>
     </ContentPage.BindingContext>
     
     <ContentPage.Content>
         <StackLayout>
+            <!--Die Eigenschaften werden über Kurzbindungen an den BindingContext (das ViewModel) gebunden.-->
             <Entry x:Name="Ent_Hersteller"
                    Text="{Binding NeuerHersteller}"/>
             <Entry x:Name="Ent_MaxGeschwindigkeit"
                    Text="{Binding NeueMaxGeschwindigkeit}"/>
-            
+            <!--Commands ersetzen die Events. CommandParameter können beliebige zusätzliche Infos enthalten,
+            welche die Commands für ihre Ausführung benötigen-->
             <Button x:Name="Btn_Add" Text="Hinzufügen"
                     Command="{Binding HinzufuegenCmd}"/>
 
+            <!--Für ListView und DataTemplate vgl. MainPage.xaml und PersonenDb/Pages/Pg_List.xaml-->
             <ListView x:Name="LstV_Fahrzeuge" VerticalOptions="FillAndExpand"
                       ItemsSource="{Binding Fahrzeugliste}"
                       SelectedItem="{Binding SelectedFahrzeug, Mode=TwoWay}">
